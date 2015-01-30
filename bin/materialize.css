@@ -6339,6 +6339,33 @@ select:disabled {
 .range-field {
   position: relative; }
 
+.range-multi {
+  position: relative;
+  width: 100%;
+  height: 35px; }
+  .range-multi div {
+    margin-top: 15px; }
+
+.range-area-selected {
+  position: absolute;
+  height: 3px;
+  background: #0f9d58; }
+
+.range-area-whole {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #c2c0c2; }
+
+.range-handle {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  top: -6px;
+  cursor: pointer;
+  background: #0f9d58; }
+
 input[type=range], input[type=range] + .thumb {
   cursor: pointer; }
 

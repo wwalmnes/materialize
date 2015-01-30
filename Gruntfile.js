@@ -502,6 +502,7 @@ module.exports = function(grunt) {
   grunt.registerTask('js_compile', ['concat:temp', 'uglify:bin', 'notify:js_compile', 'clean:temp']);
   grunt.registerTask('sass_compile', ['sass:gh', 'sass:bin', 'notify:sass_compile']);
   grunt.registerTask('start_server', ['connect:server', 'notify:server']);
+  grunt.registerTask('serve', ['sass_compile', 'js_compile', 'start_server']);
 
   grunt.registerTask("monitor", ["concurrent:monitor"]);
 };

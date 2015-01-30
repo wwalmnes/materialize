@@ -155,7 +155,49 @@
       }
     });
 
+    var range_multi = '.range-multi';
+    var range_handle = '.range-handle';
+    var range_multi_mousedown = null;
+    $(document).on("mousedown", range_handle, function(e) {
+      range_multi_mousedown = $(this);
+    });
+    $(document).on("mouseup", range_handle, function(e) {
+      range_multi_mousedown = null;
+    });
+    $(document).on("mousemove", range_multi, function(e) {
+      // console.log(e.offsetX + '/' + $(this).width());
+      if (range_multi_mousedown !== null) {
+        var selected = $(this).find('.range-area-selected');
 
+
+
+
+        var left = e.pageX - $(this).offset().left;
+        var width = $(this).outerWidth();
+        var pos = Math.floor(left / width * 100);
+        if (pos > 100) {
+          pos = 100;
+        }
+        else if (pos < 0) {
+          pos = 0;
+        }
+        range_multi_mousedown.css({left: pos + '%'});
+
+
+        var handle_left = $(this).find('.range-handle-left')[0];
+        var handle_right = $(this).find('.range-handle-right')[0];
+        // console.log(parseInt(handle_right.css('left'), 10));
+        // console.log(parseInt(handle_left.css('left'), 10));
+        var selected_width = parseInt(handle_right.style.left, 10) -
+        parseInt(handle_left.style.left, 10);
+        var selected_left = parseInt(handle_left.style.left, 10);
+        selected.css({
+          width: selected_width + '%',
+          left: (selected_left+1) + '%'
+        });
+//
+      }
+    });
 
 
     //  Select Functionality
